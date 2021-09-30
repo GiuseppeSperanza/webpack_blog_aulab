@@ -1,17 +1,25 @@
-const path = require('path'); // funzione fornita da Node.js
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js', // file iniziale letto da webpack
+  entry: './src/index.js',
   output: {
-    filename: 'bundle.js', // file generato per il bundle
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  plugins: [
+      new HtmlWebpackPlugin(),
+      new CleanWebpackPlugin(),
+      new BundleAnalyzerPlugin()
+  ],
   module: {
     rules: [
       {
-        test: /\.css$/, // -> Regex per carcare solo file CSS
-        use: ['style-loader', 'css-loader'] // -> Loader da usare e in che ordine
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   }
