@@ -10,10 +10,14 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  devtool: 'inline-source-map',
   plugins: [
       new HtmlWebpackPlugin(),
       new CleanWebpackPlugin(),
-      new BundleAnalyzerPlugin()
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: 'report-bundle.html',
+      }),
   ],
   module: {
     rules: [
