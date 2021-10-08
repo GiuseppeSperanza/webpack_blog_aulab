@@ -14,11 +14,14 @@ module.exports = {
   plugins: [
       new HtmlWebpackPlugin(),
       new CleanWebpackPlugin(),
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        reportFilename: 'report-bundle.html',
-      }),
+      //new BundleAnalyzerPlugin({
+      //  analyzerMode: 'static',
+      // reportFilename: 'report-bundle.html',
+      //}),
   ],
+  devServer: {
+    static: './dist',
+  },
   module: {
     rules: [
       {
