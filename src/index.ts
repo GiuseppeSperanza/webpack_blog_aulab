@@ -1,5 +1,6 @@
 import './style.css'; // --> import del file css
 import logger from './logger.js';
+import { products } from './products';
 
 function drawComponents() {
   // crea un elemento HTML
@@ -12,6 +13,13 @@ function drawComponents() {
   // Aggiunge la classe CSS create nel file style.css
   text.classList.add('red');
   element.appendChild(text);
+
+  // Visualizziamo i prodotti nel template
+  products.forEach(( product ) => {
+    const productElement = document.createElement("p");
+    productElement.innerHTML = `${product.name} - totale: ${product.count ?? 0}`;
+    element.appendChild(productElement);
+  });
 
   // Creo un bottone
   const btn = document.createElement("button");

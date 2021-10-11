@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -14,16 +14,20 @@ module.exports = {
   plugins: [
       new HtmlWebpackPlugin(),
       new CleanWebpackPlugin(),
-      //new BundleAnalyzerPlugin({
-      //  analyzerMode: 'static',
-      // reportFilename: 'report-bundle.html',
-      //}),
   ],
   devServer: {
     static: './dist',
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'], // Estensioni dei file che Webpack legge in fase di compilazione
+  },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,  // Loader Typescript
+      },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
