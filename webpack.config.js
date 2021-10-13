@@ -29,8 +29,15 @@ module.exports = {
         exclude: /node_modules/,  // Loader Typescript
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.s[ac]ss$/i,
+        use: [
+            // crea il tag 'style' nel DOM in cui inittare il codice
+            'style-loader',
+            // Converte il codice css in modulo commonJs per poterlo importare
+            'css-loader',
+            // Compila codice Sass in css
+            'sass-loader',
+        ]
       }
     ]
   }

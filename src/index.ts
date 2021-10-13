@@ -1,4 +1,4 @@
-import './style.css'; // --> import del file css
+import './style.scss'; // --> import del file scss
 import logger from './logger.js';
 import { products } from './products';
 
@@ -6,6 +6,8 @@ function drawComponents() {
   // crea un elemento HTML
   const element = document.createElement('div');
   element.classList.add('container');
+
+  element.classList.add('bg-warning');
 
   const text = document.createElement("p");
   // Aggiunge la scritta Hello World
